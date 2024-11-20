@@ -29,6 +29,8 @@ double variance(std::vector<int> data, double mu) {
 
 int main() {
     using namespace std;
+
+
     // Exercise a)
     ifstream filein("datensumme.txt");
     double zahl;
@@ -36,11 +38,14 @@ int main() {
     while(filein >> zahl) {
         daten.push_back(zahl);
     }
+    
+    /*
     filein.close();
     for(int entry: daten) {
         cout << entry << endl;
     }
     cout << daten.size() << endl;
+    */
     cout << probability(daten, 3.11538) << endl;
 
 
