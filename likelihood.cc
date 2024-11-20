@@ -19,6 +19,14 @@ double probability(std::vector<int> data, double mu) {
     return prob;
 }
 
+double probability2(std::vector<int> data) {
+    double prob = 1;
+    for(int entry: data){
+        prob = prob * poisson(entry, entry);
+    }
+    return prob;
+}
+
 double variance(std::vector<int> data, double mu) {
     double entry_variance = 0;
     for(int entry: data) {
@@ -85,5 +93,13 @@ int main() {
     cout << variance(daten, 3.2)/sqrt(daten.size()) << endl;
 
     //Exercise e)
-    
+    double ratio = probability(daten, 3.11538)/probability2(daten);
+    double likelihood_ratio = -2*log(ratio);
+    cout << likelihood_ratio << endl;
+
+    double ndof = 233;
+    double std_ndof = sqrt(2*ndof);
+    double z = (likelihood_ratio-ndof)/std_ndof;
+    cout << z << endl;
+
 }
